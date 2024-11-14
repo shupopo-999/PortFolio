@@ -1,5 +1,8 @@
 import React from 'react';
-import Login from './Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import  SignUp  from './accounts/signup';
+import Login from './accounts/Login';
 
 const App: React.FC = () => {
   const handleLogin = (email: string, password: string) => {
@@ -7,8 +10,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <Login onSubmit={handleLogin} />
+    <div className="App">
+      <BrowserRouter basename='/'>
+          <Routes>
+            <Route path="/signup" element={<SignUp />}/>
+            <Route path="/login" element={<Login />}/>
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 };

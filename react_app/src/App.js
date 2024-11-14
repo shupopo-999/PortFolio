@@ -1,14 +1,22 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = require("react/jsx-runtime");
-const Login_1 = __importDefault(require("./Login"));
-const App = () => {
-    const handleLogin = (email, password) => {
+var react_1 = require("react");
+var react_router_dom_1 = require("react-router-dom");
+require("./App.css");
+var signup_1 = require("./accounts/signup");
+var Login_1 = require("./accounts/Login");
+var App = function () {
+    var handleLogin = function (email, password) {
         console.log('ログインされたメールアドレス:', email, 'とパスワード:', password);
     };
-    return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(Login_1.default, { onSubmit: handleLogin }) }));
+    return (<div className="App">
+      <react_router_dom_1.BrowserRouter basename='/'>
+          <react_router_dom_1.Routes>
+            <react_router_dom_1.Route path="/signup" element={<signup_1.default />}/>
+            <react_router_dom_1.Route path="/login" element={<Login_1.default />}/>
+          </react_router_dom_1.Routes>
+        </react_router_dom_1.BrowserRouter>
+    </div>);
 };
-exports.default = App;
+
+export default App;
